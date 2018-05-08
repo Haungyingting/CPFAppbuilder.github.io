@@ -76,7 +76,7 @@
             // RGB
             function changeColor() {
                 if (value < 500) {
-                    //r: red
+                    /*//r: red
                     var r = ui.get("rgb led", "r");
                     //g:green
                     var g = ui.get("rgb led", "g");
@@ -86,32 +86,33 @@
                 } else {
                     cpf.set("rgb led", 0, 0, 0);
                 }
-                cpf.repeat();
+                cpf.repeat();*/
 
 
-                /*var Rled = document.getElementById("rled").value;
-                 var Gled = document.getElementById("gled").value;
-                 var Bled = document.getElementById("bled").value;
+                    var Rled = document.getElementById("rled").value;
+                    var Gled = document.getElementById("gled").value;
+                    var Bled = document.getElementById("bled").value;
 
-                 document.getElementById("redvalue").innerHTML = Rled;
-                 document.getElementById("greenvalue").innerHTML = Gled;
-                 document.getElementById("bluevalue").innerHTML = Bled;
+                    document.getElementById("redvalue").innerHTML = Rled;
+                    document.getElementById("greenvalue").innerHTML = Gled;
+                    document.getElementById("bluevalue").innerHTML = Bled;
 
-                 document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
+                    document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
 
-                 if (cpf) {
-                     cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
-                 }*/
-
-            }
+                    if (cpf) {
+                        cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
+                    }
 
 
-            // cpf setup
-            function setup() {
-                if (cpf)
-                    cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1]');
-                //document.getElementById("demo").innerHTML += ret + "<br>";
-            }
+                }
+
+
+                // cpf setup
+                function setup() {
+                    if (cpf)
+                        cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1]');
+                    //document.getElementById("demo").innerHTML += ret + "<br>";
+                }
         </script>
 </body>
 

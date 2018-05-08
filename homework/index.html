@@ -10,15 +10,17 @@
 </head>
 
 <body>
-    <font id="title">homework</font>
-    <p><br>
+    <font id="title">Little Night Light</font>
+    <p>
+        <br>
 
         <div id="content" class="row">
             <div class="col-sm-12  col-xs-12">
                 <div id="analog" class="col-sm-6 col-xs-12">
                     <div class="analogclass">
                         <img class="analogsensor" src="img/light.png" />
-                        <span class="analogvalue" id="lightvalue">none</span><br>
+                        <span class="analogvalue" id="lightvalue">none</span>
+                        <br>
                     </div>
                     <p>
                 </div>
@@ -27,13 +29,19 @@
                     <table style="margin: 0 auto; margin-top: 10px;">
                         <tr style="text-align: center;">
                             <td>
-                                <font color="red"><b>Red</b></font>
+                                <font color="red">
+                                    <b>Red</b>
+                                </font>
                             </td>
                             <td>
-                                <font color="green"><b>green</b></font>
+                                <font color="green">
+                                    <b>green</b>
+                                </font>
                             </td>
                             <td>
-                                <font color="blue"><b>blue</b></font>
+                                <font color="blue">
+                                    <b>blue</b>
+                                </font>
                             </td>
                         </tr>
                         <tr style="text-align: center;">
@@ -42,9 +50,15 @@
                             <td id="bluevalue">0</td>
                         </tr>
                         <tr>
-                            <td><input Onchange="changeColor();" type="range" id="rled" class="ledbar" value="0" min="0" max="255"></td>
-                            <td><input Onchange="changeColor();" type="range" id="gled" class="ledbar" value="0" min="0" max="255"></td>
-                            <td><input Onchange="changeColor();" type="range" id="bled" class="ledbar" value="0" min="0" max="255"></td>
+                            <td>
+                                <input Onchange="changeColor();" type="range" id="rled" class="ledbar" value="0" min="0" max="255">
+                            </td>
+                            <td>
+                                <input Onchange="changeColor();" type="range" id="gled" class="ledbar" value="0" min="0" max="255">
+                            </td>
+                            <td>
+                                <input Onchange="changeColor();" type="range" id="bled" class="ledbar" value="0" min="0" max="255">
+                            </td>
                         </tr>
                     </table>
                     <span id="showcolor"></span>
@@ -62,6 +76,7 @@
                     lightdata = cpf.get("light sensor");
                     document.getElementById("lightvalue").innerHTML = lightdata;
                     changeColor();
+
                 }
                 setTimeout(loop, 1000);
             }
@@ -69,19 +84,20 @@
 
             // RGB
             function changeColor() {
+                if (lightdata < 500) {
+                    var Rled = document.getElementById("rled").value;
+                    var Gled = document.getElementById("gled").value;
+                    var Bled = document.getElementById("bled").value;
 
-                var Rled = document.getElementById("rled").value;
-                var Gled = document.getElementById("gled").value;
-                var Bled = document.getElementById("bled").value;
+                    document.getElementById("redvalue").innerHTML = Rled;
+                    document.getElementById("greenvalue").innerHTML = Gled;
+                    document.getElementById("bluevalue").innerHTML = Bled;
 
-                document.getElementById("redvalue").innerHTML = Rled;
-                document.getElementById("greenvalue").innerHTML = Gled;
-                document.getElementById("bluevalue").innerHTML = Bled;
+                    document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
 
-                document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
-
-                if (cpf) {
-                    cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
+                    if (cpf) {
+                        cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
+                    }
                 } else {
                     Rled = 0;
                     Gled = 0;
@@ -91,16 +107,14 @@
                     document.getElementById("bluevalue").innerHTML = Bled;
 
                     document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
+
                     if (cpf) {
                         cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
                     }
-
-
-
                 }
-
-
             }
+
+
 
 
             // cpf setup

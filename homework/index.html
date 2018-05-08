@@ -66,7 +66,7 @@
 
                     lightdata = cpf.get("light sensor");
                     document.getElementById("lightvalue").innerHTML = lightdata;
-
+                    changeColor();
                 }
                 setTimeout(loop, 1000);
             }
@@ -74,7 +74,7 @@
 
             // RGB
             function changeColor() {
-                if (lightdata < 500) {
+                /*if (lightdata < 500) {
                     //r: red
                     var r = ui.get("rgb led", "r");
                     //g:green
@@ -85,22 +85,37 @@
                 } else {
                     cpf.set("rgb led", 0, 0, 0);
                 }
-                cpf.repeat();
+                cpf.repeat();*/
 
 
-                /* var Rled = document.getElementById("rled").value;
-                 var Gled = document.getElementById("gled").value;
-                 var Bled = document.getElementById("bled").value;
+                var Rled = document.getElementById("rled").value;
+                var Gled = document.getElementById("gled").value;
+                var Bled = document.getElementById("bled").value;
 
-                 document.getElementById("redvalue").innerHTML = Rled;
-                 document.getElementById("greenvalue").innerHTML = Gled;
-                 document.getElementById("bluevalue").innerHTML = Bled;
+                document.getElementById("redvalue").innerHTML = Rled;
+                document.getElementById("greenvalue").innerHTML = Gled;
+                document.getElementById("bluevalue").innerHTML = Bled;
 
-                 document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
+                document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
 
-                 if (cpf) {
-                     cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
-                 }*/
+                if (cpf) {
+                    cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
+                } else {
+                    Rled = 0;
+                    Gled = 0;
+                    Bled = 0;
+                    document.getElementById("redvalue").innerHTML = Rled;
+                    document.getElementById("greenvalue").innerHTML = Gled;
+                    document.getElementById("bluevalue").innerHTML = Bled;
+
+                    document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
+                    if (cpf) {
+                        cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+                    }
+
+
+
+                }
 
 
             }

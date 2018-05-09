@@ -1,0 +1,33 @@
+*{
+    Font-family : Microsoft JhengHei ;
+    }
+    Html , body {
+    Margin: 0;
+    Padding: 0;
+    Overflow: hidden
+    }
+    Body{
+    Background-color: #9CCDFB
+    }
+    .images{
+    Position: relative;
+    Width: 100%;
+    height: 250px;
+    }
+    #thermometer{
+    Position: absolute;
+    Width: 100%;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    }
+    #pointer{
+    Position: absolute;
+    Width: 30%;
+    Bottom: 2px;
+    Right: 50%;
+    Transform: translateX(5px);
+    Transform-origin: 100% 50%;
+    Transform: rotate(0deg);
+    Transition: 0.5s;
+    }

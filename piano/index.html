@@ -26,7 +26,7 @@
                 <td><button id="udo"><img src="img/DO..jpg"></button></td>
             </tr>
         </table>
-        <button><img src="img/buttom.jpg"></button>
+        <button id="btn"><img src="img/buttom.jpg"></button>
 
     </div>
 
@@ -41,6 +41,7 @@
         var LA = document.getElementById("la");
         var SI = document.getElementById("si");
         var UDO = document.getElementById("udo");
+        var BTN = document.getElementById("btn");
 
         DO.addEventListener('touchstart', function(event) {
             cpf.request('["tone_play",5,261,100],["sleep",100]');
@@ -66,12 +67,18 @@
         UDO.addEventListener('touchstart', function(event) {
             cpf.request('["tone_play",5,523,100],["sleep",100]');
         });
+        BTN.addEventListener('touchstart', function(event) {
+
+        });
 
 
 
 
 
-        var pianonode = [8, 8, 5, 5, 6, 6, 5, 3, 5, 8, 6, 5, 3, 6, 5, 3, 5, 3, 2, 1];
+        var pianonode = [8, 8, 5, 5, 6, 6, 5,
+            3, 5, 8, 6, 5, 0,
+            3, 6, 5, 3, 5, 3, 2, 1
+        ];
         for (i = 0; i <= pianonode.length; i++) {
             switch (pianonode[i]) {
                 case 1:
@@ -98,6 +105,8 @@
                 case 8:
                     cpf.request('["tone_play",5,523,300],["sleep",300]');
                     break;
+                case 0:
+                    cpf.request('["sleep",300]');
 
             }
         }

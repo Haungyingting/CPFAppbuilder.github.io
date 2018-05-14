@@ -76,7 +76,7 @@
 
         function dad() {
             var pianonode = [8, 8, 5, 5, 6, 6, 5, 3, 5, 8, 6, 5, 3, 6, 5, 3, 5, 3, 2, 1];
-            for (i = 0; i <= pianonode.length; i++) {
+            for (i = 0; i < pianonode.length; i++) {
                 switch (pianonode[i]) {
                     case 1:
                         cpf.request('["tone_play",5,261,300],["sleep",300]');

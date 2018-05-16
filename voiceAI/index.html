@@ -46,7 +46,7 @@
                 if (Result.includes("好熱"))
                 {
                     console.log("hottt");
-                    cpf.request('["analogWrite",6, 100]');
+                    cpf.request('["analogWrite",3, 100]');
                     // cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]'); //red
                     // cpf.request('["grove_rgblcd_clear"]');
                     // cpf.request('["grove_rgblcd_print", 0, 0,"red"]');
@@ -64,7 +64,7 @@
                     // cpf.request('["grove_rgblcd_print", 0, 0,"red"]');
                     // document.getElementById("words").innerHTML = "red" +Result ;
                     // cpf.SetSpeech("On" , "cmn-Hant-TW" , "已幫您關風扇了", 1, 1);
-                    cpf.request('["analogWrite",6,0]');
+                    cpf.request('["analogWrite",3,0]');
                     
                 }
             }
@@ -74,7 +74,7 @@
 
             function setup() {
                 if (cpf) {
-                    cpf.setPinMode('["resetPin"],["setPinMode","digital",6,"PWM"]');
+                    cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"]');
                 }
             }
 

@@ -44,23 +44,24 @@
             {
                 if (Result.includes("好熱"))
                 {
-                    cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]'); //red
-                    cpf.request('["grove_rgblcd_clear"]');
-                    cpf.request('["grove_rgblcd_print", 0, 0,"red"]');
-                    document.getElementById("words").innerHTML = "red" +Result ;
-                    cpf.SetSpeech("On" , "cmn-Hant- TW" , "風扇來囉" , 0.5, 2);
-                    for( i = 0; i<255; i+=10)
-                    {
-                        cpf.request('["analogwrite",6,'+i+']');
-                    }
+                    cpf.request('["analogwrite",6, 100]');
+                    // cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]'); //red
+                    // cpf.request('["grove_rgblcd_clear"]');
+                    // cpf.request('["grove_rgblcd_print", 0, 0,"red"]');
+                    // document.getElementById("words").innerHTML = "red" +Result ;
+                    // cpf.SetSpeech("On" , "cmn-Hant- TW" , "風扇來囉" , 0.5, 2);
+                    // for( i = 0; i<255; i+=10)
+                    // {
+                    //     cpf.request('["analogwrite",6,'+i+']');
+                    // }
                 } 
                 else if(Result.includes("好冷"))
                 {
-                    cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]'); //red
-                    cpf.request('["grove_rgblcd_clear"]');
-                    cpf.request('["grove_rgblcd_print", 0, 0,"red"]');
-                    document.getElementById("words").innerHTML = "red" +Result ;
-                    cpf.SetSpeech("On" , "cmn-Hant-TW" , "已幫您關風扇了", 1, 1);
+                    // cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]'); //red
+                    // cpf.request('["grove_rgblcd_clear"]');
+                    // cpf.request('["grove_rgblcd_print", 0, 0,"red"]');
+                    // document.getElementById("words").innerHTML = "red" +Result ;
+                    // cpf.SetSpeech("On" , "cmn-Hant-TW" , "已幫您關風扇了", 1, 1);
                     cpf.request('["analogwrite",6,0]');
                     
                 }
@@ -71,7 +72,7 @@
 
             function setup() {
                 if (cpf) {
-                    cpf.setPinMode('["resetPin"],["setPinMode","digital",5,"TONE"]');
+                    cpf.setPinMode('["resetPin"],["setPinMode","digital",6,"PWM"]');
                 }
             }
 

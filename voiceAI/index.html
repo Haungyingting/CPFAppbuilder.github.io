@@ -16,28 +16,28 @@
             var clickbtn = document.getElementById("clickbtn");
 
             setup();
-            cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');
-            cpf.request('["grove_rgblcd_set_rgb", 0, 0, 0]');
+            // cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');
+            // cpf.request('["grove_rgblcd_set_rgb", 0, 0, 0]');
             cpf.request('["analogWrite", 6, 0]');
-            cpf.request('["grove_rgblcd_print", 0, 1, "Hello World"]');
+            // cpf.request('["grove_rgblcd_print", 0, 1, "Hello World"]');
 
 
             clickbtn.addEventListener('click', function (event) {
                 cpf.initSpeechRecognition("cmn-Hant-TW");
             });
 
-            function Forloop(){
-                setTimeout(function(){
-                    document.getElementById("light").innerHTML=i;
-                    cpf.request('["grove_setColorRGB",0,0,0,'+1+']');
-                    i+=5;
-                    if(i<255)
-                    {
-                        Forloop();
-                    }
-                    else if(i==255) Forloop2();
-                },200)
-            }
+            // function Forloop(){
+            //     setTimeout(function(){
+            //         document.getElementById("light").innerHTML=i;
+            //         cpf.request('["grove_setColorRGB",0,0,0,'+1+']');
+            //         i+=5;
+            //         if(i<255)
+            //         {
+            //             Forloop();
+            //         }
+            //         else if(i==255) Forloop2();
+            //     },200)
+            // }
 
 
             function GetRecognizeResult(Result,Type)

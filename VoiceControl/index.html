@@ -17,7 +17,7 @@
     <script>
         var clickbtn = document.getElementById("clickbtn");
         setup();
-        cpf.request('["analogWrite",3,0]');
+        cpf.request('["analogWrite",5,0]');
         clickbtn.addEventListener('click', function(event) {
             cpf.initSpeechRecognition("cmn-Hant-Tw");
         });
@@ -27,12 +27,12 @@
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "風扇來了", 1, 2);
                 for (i = 0; i < 255; i += 10) { //風扇建快
-                    cpf.request('["analogWrite",3,' + i + ']');
+                    cpf.request('["analogWrite",5,' + i + ']');
                 }
             } else if (Result.includes("好冷") || Result.includes("if u cool")) {
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "風扇關閉", 1, 2);
-                cpf.request('["analogWrite",3,0]'); //風扇關
+                cpf.request('["analogWrite",5,0]'); //風扇關
 
             }
         }
@@ -41,7 +41,7 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"]')
+                cpf.setPinMode('["resetPin"],["setPinMode","digital",5,"PWM"]')
             }
         }
     </script>

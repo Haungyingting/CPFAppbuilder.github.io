@@ -35,6 +35,9 @@
                 for (i = 0; i < 255; i += 10) { //風扇建快
                     cpf.request('["analogWrite",3,' + i + ']');
                     music();
+                    rotation();
+                    LEDControl(1, 1000); //燈開
+                    servoAngleControl(); //窗簾
                 }
 
 
@@ -43,6 +46,8 @@
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "主人出門小心鳩咪", 1, 2);
                 cpf.request('["analogWrite",3,0]'); //風扇關
+                LEDControl(1, 0); //燈關
+                servoAngleControl(); //窗簾關
 
             }
         }
@@ -51,9 +56,26 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"],["setPinMode","digital",5,"TONE"]');
+                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"],["setPinMode","digital",5,"TONE"],["setPinMode","digital",4,"SERVO"],["setPinMode","digital",2,"TONE"]');
             }
 
+        }
+
+        function rotation() { //窗簾
+            document.getElementById("pointer").style.transform = "rotate(" + 180 + "deg)";
+            document.getElementById("degree").innerHTML = 180;
+            cpf.request('["analogWrite",4,' + 180 + ']');
+
+        }
+
+        function LEDControl(status, time) { //燈光
+            cpf.set("socket d2", status);
+            delay(time);
+        }
+
+        function servoAngleControl() {
+            servo = ui.get("socket d4");
+            cpf.set("socket d4", servo, 180);
         }
 
         function music() { //哥哥爸爸

@@ -42,7 +42,8 @@
             } else if (Result.includes("開燈")) {
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "燈來囉", 1, 2);
-                LEDControl(1, 1000); //燈開
+                // LEDControl(1, 1000); //燈開
+                cpf.set("socket d2", 1);
             } else if (Result.includes("開窗簾")) {
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "窗簾來了", 1, 2);
@@ -52,7 +53,8 @@
                 cpf.SetSpeech("On", "cmn-Hant-TW", "主人出門小心鳩咪主人好美", 1, 2);
                 cpf.request('["analogWrite",3,0]'); //風扇關
                 cpf.request('["analogWrite",4,' + 10 + ']'); //窗簾
-                LEDControl(0, 1000); //燈關
+                //LEDControl(0, 1000); //燈關
+                cpf.set("socket d2", 0);
 
             }
         }

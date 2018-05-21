@@ -15,6 +15,43 @@
     <p id="words">none</p>
 
     <script>
+        var DO = document.getElementById("do");
+        var RE = document.getElementById("re");
+        var MI = document.getElementById("mi");
+        var FA = document.getElementById("fa");
+        var SO = document.getElementById("so");
+        var LA = document.getElementById("la");
+        var SI = document.getElementById("si");
+        var UDO = document.getElementById("udo");
+        var BTN = document.getElementById("btn");
+
+        DO.addEventListener('touchstart', function(event) {
+            cpf.request('["tone_play",5,261,100],["sleep",100]');
+        });
+        RE.addEventListener('touchstart', function(event) {
+            cpf.request('["tone_play",5,293,100],["sleep",100]');
+        });
+        MI.addEventListener('touchstart', function(event) {
+            cpf.request('["tone_play",5,329,100],["sleep",100]');
+        });
+        FA.addEventListener('touchstart', function(event) {
+            cpf.request('["tone_play",5,349,100],["sleep",100]');
+        });
+        SO.addEventListener('touchstart', function(event) {
+            cpf.request('["tone_play",5,392,100],["sleep",100]');
+        });
+        LA.addEventListener('touchstart', function(event) {
+            cpf.request('["tone_play",5,440,100],["sleep",100]');
+        });
+        SI.addEventListener('touchstart', function(event) {
+            cpf.request('["tone_play",5,493,100],["sleep",100]');
+        });
+        UDO.addEventListener('touchstart', function(event) {
+            cpf.request('["tone_play",5,523,100],["sleep",100]');
+        });
+        BTN.addEventListener('touchstart', function(event) {
+            dad();
+        });
         var clickbtn = document.getElementById("clickbtn");
         setup();
         cpf.request('["analogWrite",6,0]');
@@ -28,6 +65,39 @@
                 cpf.SetSpeech("On", "cmn-Hant-TW", "主人歡迎回家", 1, 2);
                 for (i = 0; i < 255; i += 10) { //風扇建快
                     cpf.request('["analogWrite",6,' + i + ']');
+                }
+                var pianonode = [8, 8, 5, 5, 6, 6, 5, 3, 5, 8, 6, 5, 0, 6, 0, 5, 0, 3, 6, 5, 0, 3, 5, 3, 2, 1];
+                for (i = 0; i < pianonode.length; i++) {
+                    switch (pianonode[i]) {
+                        case 1:
+                            cpf.request('["tone_play",5,261,300],["sleep",300]');
+                            break;
+                        case 2:
+                            cpf.request('["tone_play",5,293,300],["sleep",300]');
+                            break;
+                        case 3:
+                            cpf.request('["tone_play",5,329,300],["sleep",300]');
+                            break;
+                        case 4:
+                            cpf.request('["tone_play",5,349,300],["sleep",300]');
+                            break;
+                        case 5:
+                            cpf.request('["tone_play",5,392,300],["sleep",300]');
+                            break;
+                        case 6:
+                            cpf.request('["tone_play",5,440,300],["sleep",300]');
+                            break;
+                        case 7:
+                            cpf.request('["tone_play",5,493,300],["sleep",300]');
+                            break;
+                        case 8:
+                            cpf.request('["tone_play",5,523,300],["sleep",300]');
+                            break;
+                        default:
+                            cpf.request('["sleep",300]');
+                            break;
+
+                    }
                 }
 
             } else if (Result.includes("出門") || Result.includes("if u cool")) {

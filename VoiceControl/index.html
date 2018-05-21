@@ -34,7 +34,7 @@
 
                 for (i = 0; i < 255; i += 10) { //風扇建快
                     cpf.request('["analogWrite",3,' + i + ']');
-                    music();
+                    //music();
                     rotation();
                     LEDControl(1, 1000); //燈開
                     servoAngleControl(); //窗簾
@@ -78,40 +78,40 @@
             cpf.set("socket d4", servo, 180);
         }
 
-        function music() { //哥哥爸爸
-            for (i = 0; i < pianonode.length; i++) {
-                switch (pianonode[i]) {
-                    case 1:
-                        cpf.request('["tone_play",5,261,300],["sleep",300]');
-                        break;
-                    case 2:
-                        cpf.request('["tone_play",5,293,300],["sleep",300]');
-                        break;
-                    case 3:
-                        cpf.request('["tone_play",5,329,300],["sleep",300]');
-                        break;
-                    case 4:
-                        cpf.request('["tone_play",5,349,300],["sleep",300]');
-                        break;
-                    case 5:
-                        cpf.request('["tone_play",5,392,300],["sleep",300]');
-                        break;
-                    case 6:
-                        cpf.request('["tone_play",5,440,300],["sleep",300]');
-                        break;
-                    case 7:
-                        cpf.request('["tone_play",5,493,300],["sleep",300]');
-                        break;
-                    case 8:
-                        cpf.request('["tone_play",5,523,300],["sleep",300]');
-                        break;
-                    default:
-                        cpf.request('["sleep",300]');
-                        break;
+        /* function music() { //哥哥爸爸
+             for (i = 0; i < pianonode.length; i++) {
+                 switch (pianonode[i]) {
+                     case 1:
+                         cpf.request('["tone_play",5,261,300],["sleep",300]');
+                         break;
+                     case 2:
+                         cpf.request('["tone_play",5,293,300],["sleep",300]');
+                         break;
+                     case 3:
+                         cpf.request('["tone_play",5,329,300],["sleep",300]');
+                         break;
+                     case 4:
+                         cpf.request('["tone_play",5,349,300],["sleep",300]');
+                         break;
+                     case 5:
+                         cpf.request('["tone_play",5,392,300],["sleep",300]');
+                         break;
+                     case 6:
+                         cpf.request('["tone_play",5,440,300],["sleep",300]');
+                         break;
+                     case 7:
+                         cpf.request('["tone_play",5,493,300],["sleep",300]');
+                         break;
+                     case 8:
+                         cpf.request('["tone_play",5,523,300],["sleep",300]');
+                         break;
+                     default:
+                         cpf.request('["sleep",300]');
+                         break;
 
-                }
-            }
-        }
+                 }
+             }
+         }*/
     </script>
 </body>
 

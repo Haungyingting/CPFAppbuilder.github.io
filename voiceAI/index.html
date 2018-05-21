@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" >
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>voiceAI</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+        <h1>voiceAI</h1>
+        <button id="clickbtn">btn</button>
+
+        <script>
+            var i;
+            var clickbtn = document.getElementById("clickbtn");
+
+            setup();
+            cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');
+            cpf.request('["grove_rgblcd_set_rgb", 0, 0, 0]');
+            cpf.request('["analogWrite", 3, 0]');
+            cpf.request('["grove_rgblcd_print", 0, 1, "Hello World"]');
+
+
+            clickbtn.addEventListener('click', function (event) {
+                cpf.initSpeechRecognition("cmn-Hant-TW");
+            });
+
+            // function Forloop(){
+            //     setTimeout(function(){
+            //         document.getElementById("light").innerHTML=i;
+            //         cpf.request('["grove_setColorRGB",0,0,0,'+1+']');
+            //         i+=5;
+            //         if(i<255)
+            //         {
+            //             Forloop();
+            //         }
+            //         else if(i==255) Forloop2();
+            //     },200)
+            // }
+
+
+            function GetRecognizeResult(Result,Type)
+            {
+                console.log("Start Recognition...");
+                if (Result.includes("好熱"))
+                {
+                    // console.log("hottt");
+                    // cpf.request('["analogWrite",3, 100]');
+                    // cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]'); //red
+                    // cpf.request('["grove_rgblcd_clear"]');
+                    // cpf.request('["grove_rgblcd_print", 0, 0,"red"]');
+                    // document.getElementById("words").innerHTML = "red" +Result ;
+                    // cpf.SetSpeech("On" , "cmn-Hant- TW" , "風扇來囉" , 0.5, 2);
+                    for( i = 0; i<255; i+=10)
+                    {
+                        cpf.request('["analogwrite",3,'+i+']');
+                    }
+                } 
+                else if(Result.includes("好冷"))
+                {
+                    // cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]'); //red
+                    // cpf.request('["grove_rgblcd_clear"]');
+                    // cpf.request('["grove_rgblcd_print", 0, 0,"red"]');
+                    // document.getElementById("words").innerHTML = "red" +Result ;
+                    cpf.SetSpeech("On" , "cmn-Hant-TW" , "已幫您關風扇了", 1, 1);
+                    cpf.request('["analogWrite",3,0]');
+                    
+                }
+            }
+
+
+
+
+            function setup() {
+                if (cpf) {
+                    cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"]');
+                }
+            }
+
+        </script>
+    
+    </body>
+</html>

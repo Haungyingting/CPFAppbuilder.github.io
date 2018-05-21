@@ -23,15 +23,16 @@
         });
 
         function GetRecognizeResult(Result, Type) {
-            if (Result.includes("好熱") || Result.includes("i know u r hot")) {
+            if (Result.includes("回家") || Result.includes("i know u r hot")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "風扇來了", 1, 2);
+                cpf.SetSpeech("On", "cmn-Hant-TW", "主人歡迎回家", 1, 2);
                 for (i = 0; i < 255; i += 10) { //風扇建快
                     cpf.request('["analogWrite",5,' + i + ']');
                 }
-            } else if (Result.includes("好冷") || Result.includes("if u cool")) {
+
+            } else if (Result.includes("掰掰") || Result.includes("if u cool")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "風扇關閉", 1, 2);
+                cpf.SetSpeech("On", "cmn-Hant-TW", "主人出門小心鳩咪", 1, 2);
                 cpf.request('["analogWrite",5,0]'); //風扇關
 
             }

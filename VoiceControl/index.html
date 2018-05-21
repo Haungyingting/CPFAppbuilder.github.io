@@ -45,11 +45,11 @@
                 LEDControl(1, 1000); //燈開
             } else if (Result.includes("開窗簾")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "窗簾來了主人好美", 1, 2);
+                cpf.SetSpeech("On", "cmn-Hant-TW", "窗簾來了", 1, 2);
                 servoAngleControl(); //窗簾
             } else if (Result.includes("出門")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "主人出門小心鳩咪", 1, 2);
+                cpf.SetSpeech("On", "cmn-Hant-TW", "主人出門小心鳩咪主人好美", 1, 2);
                 cpf.request('["analogWrite",3,0]'); //風扇關
                 LEDControl(1, 0); //燈關
                 servoAngleControl(); //窗簾關

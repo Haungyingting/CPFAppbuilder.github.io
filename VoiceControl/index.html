@@ -20,7 +20,7 @@
 
         setup();
 
-        cpf.request('["analogWrite",6,0]');
+        cpf.request('["analogWrite",3,0]');
         clickbtn.addEventListener('click', function(event) {
             cpf.initSpeechRecognition("cmn-Hant-Tw");
         });
@@ -65,13 +65,13 @@
                     }
                 }
                 for (i = 0; i < 255; i += 10) { //風扇建快
-                    cpf.request('["analogWrite",6,' + i + ']');
+                    cpf.request('["analogWrite",3,' + i + ']');
                 }
 
             } else if (Result.includes("出門") || Result.includes("if u cool")) {
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "主人出門小心鳩咪", 1, 2);
-                cpf.request('["analogWrite",6,0]'); //風扇關
+                cpf.request('["analogWrite",3,0]'); //風扇關
 
             }
         }
@@ -80,7 +80,7 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode","digital",6,"PWM"]')
+                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"]')
                 cpf.setPinMode('["resetPin"],["setPinMode","digital",5,"TONE"]');
             }
 

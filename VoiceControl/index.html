@@ -60,15 +60,15 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"],["setPinMode","digital",5,"TONE"],["setPinMode","digital",4,"SERVO"],["setPinMode","digital",2,"TONE"]');
+                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"],["setPinMode","digital",5,"TONE"],["setPinMode","digital",4,"SERVO"],["setPinMode","digital",2,"OUTPUT"]');
             }
 
         }
 
-        /*function LEDControl(status, time) { //燈光
+        function LEDControl(status, time) { //燈光
             cpf.set("socket d2", status);
             delay(time);
-        }*/
+        }
 
         /*function servoAngleControl() { //窗簾
             servo = ui.get("socket d4");

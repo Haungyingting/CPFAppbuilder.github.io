@@ -28,10 +28,8 @@
         function GetRecognizeResult(Result, Type) {
             if (Result.includes("回家") || Result.includes("i know u r hot")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "主人歡迎回家", 1, 2);
-                for (i = 0; i < 255; i += 10) { //風扇建快
-                    cpf.request('["analogWrite",6,' + i + ']');
-                }
+                cpf.SetSpeech("On", "cmn-Hant-TW", "主人歡迎回家  音樂來囉", 1, 2);
+
 
 
                 for (i = 0; i < pianonode.length; i++) {
@@ -65,6 +63,9 @@
                             break;
 
                     }
+                }
+                for (i = 0; i < 255; i += 10) { //風扇建快
+                    cpf.request('["analogWrite",6,' + i + ']');
                 }
 
             } else if (Result.includes("出門") || Result.includes("if u cool")) {

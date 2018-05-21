@@ -26,7 +26,7 @@
         });
 
         function GetRecognizeResult(Result, Type) {
-            if (Result.includes("開電扇") || Result.includes("i know u r hot")) {
+            if (Result.includes("開電扇")) {
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "電扇來囉", 1, 2);
 
@@ -43,9 +43,9 @@
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "燈來囉", 1, 2);
                 LEDControl(1, 1000); //燈開
-            } else if (Result.includes("開燈")) {
+            } else if (Result.includes("開窗簾")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "燈來囉", 1, 2);
+                cpf.SetSpeech("On", "cmn-Hant-TW", "窗簾來了主人好美", 1, 2);
                 servoAngleControl(); //窗簾
             } else if (Result.includes("出門")) {
                 document.getElementById("words").innerHTML = Result;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <title>VoiceControl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>VoiceControl</h1>
+    <button id="clickbtn">speak</button>
+    <p id="words">none</p>
+
+    <script>
+        var clickbtn = document.getElementById("clickbtn");
+        setuo();
+        cpf.request('["analogWrite",3,0]');
+        clickbtn.addEventListener('click', function(event) {
+            cpf.initSpeechRecognition("cmn-Hant-Tw");
+        });
+
+        function GetRecognizeResult(Result, Type) {
+            if (Result.includes("好熱") || Result.includes("i know u r hot")) {
+                document.getElementById("words").innerHTML = Result;
+                cpf.SetSpeech("On", "cmn-Hant-TW", "風扇來了", 1, 2);
+                for (i = 0; i < 255; i += 10) { //風扇建快
+                    cpf.request('["analogWrite",3,' + i + ']');
+                }
+            } else if (Result.includes("好冷") || Result.includes("if u cool")) {
+                document.getElementById("words").innerHTML = Result;
+                cpf.SetSpeech("On", "cmn-Hant-TW", "風扇關閉", 1, 2);
+                cpf.request('["analogWrite",3,0]'); //風扇關
+
+            }
+        }
+
+
+
+        function setup() {
+            if (cpf) {
+                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"]')
+            }
+        }
+    </script>
+</body>
+
+</html>

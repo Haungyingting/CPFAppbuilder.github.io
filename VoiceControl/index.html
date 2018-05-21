@@ -30,11 +30,13 @@
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "主人歡迎回家  音樂來囉", 1, 2);
 
-                music();
+
 
                 for (i = 0; i < 255; i += 10) { //風扇建快
                     cpf.request('["analogWrite",3,' + i + ']');
                 }
+
+                music();
 
             } else if (Result.includes("出門") || Result.includes("if u cool")) {
                 document.getElementById("words").innerHTML = Result;

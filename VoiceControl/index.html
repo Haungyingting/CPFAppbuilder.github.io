@@ -15,16 +15,6 @@
     <p id="words">none</p>
 
     <script>
-        var DO = document.getElementById("do");
-        var RE = document.getElementById("re");
-        var MI = document.getElementById("mi");
-        var FA = document.getElementById("fa");
-        var SO = document.getElementById("so");
-        var LA = document.getElementById("la");
-        var SI = document.getElementById("si");
-        var UDO = document.getElementById("udo");
-        var BTN = document.getElementById("btn");
-
         DO.addEventListener('touchstart', function(event) {
             cpf.request('["tone_play",5,261,100],["sleep",100]');
         });

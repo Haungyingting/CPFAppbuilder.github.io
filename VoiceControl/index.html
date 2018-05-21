@@ -15,33 +15,6 @@
     <p id="words">none</p>
 
     <script>
-        DO.addEventListener('touchstart', function(event) {
-            cpf.request('["tone_play",5,261,100],["sleep",100]');
-        });
-        RE.addEventListener('touchstart', function(event) {
-            cpf.request('["tone_play",5,293,100],["sleep",100]');
-        });
-        MI.addEventListener('touchstart', function(event) {
-            cpf.request('["tone_play",5,329,100],["sleep",100]');
-        });
-        FA.addEventListener('touchstart', function(event) {
-            cpf.request('["tone_play",5,349,100],["sleep",100]');
-        });
-        SO.addEventListener('touchstart', function(event) {
-            cpf.request('["tone_play",5,392,100],["sleep",100]');
-        });
-        LA.addEventListener('touchstart', function(event) {
-            cpf.request('["tone_play",5,440,100],["sleep",100]');
-        });
-        SI.addEventListener('touchstart', function(event) {
-            cpf.request('["tone_play",5,493,100],["sleep",100]');
-        });
-        UDO.addEventListener('touchstart', function(event) {
-            cpf.request('["tone_play",5,523,100],["sleep",100]');
-        });
-        BTN.addEventListener('touchstart', function(event) {
-            dad();
-        });
         var clickbtn = document.getElementById("clickbtn");
         setup();
         cpf.request('["analogWrite",6,0]');
@@ -56,6 +29,7 @@
                 for (i = 0; i < 255; i += 10) { //風扇建快
                     cpf.request('["analogWrite",6,' + i + ']');
                 }
+
                 var pianonode = [8, 8, 5, 5, 6, 6, 5, 3, 5, 8, 6, 5, 0, 6, 0, 5, 0, 3, 6, 5, 0, 3, 5, 3, 2, 1];
                 for (i = 0; i < pianonode.length; i++) {
                     switch (pianonode[i]) {

@@ -17,6 +17,7 @@
         setup();
         var lightdata;
         var tempdata = cpf.get("temperature sensor");
+        document.getElementById("lightvalue").innerHTML = lightdata;
         var celsius = toCelsius(tempdata);
 
         if (lightdata < 500) //光感測器控制LED

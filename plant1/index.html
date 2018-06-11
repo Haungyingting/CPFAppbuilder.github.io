@@ -1,0 +1,52 @@
+ !DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <title>VoiceControl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h3>Temperature:<span id="temp">none</span>。c</h3>
+    <h3>lightdata:<span id="lightvalue">none</span></h3>
+
+    <script>
+        var moistureSensor;
+        var lightSensor;
+        if (lightSensorSet() < 300) {
+            LEDControl(1);
+        } else {
+            LEDControl(0);
+        }
+        if (moistureSensorSet() < 300) {
+            sprayControl(255);
+        } else {
+            sprayControl(0);
+        }
+
+        function moistureSensorSet() {
+            moistureSensor = cpf.get("socket a0");
+            ui.set("socket a0", moistureSensor);
+            return moistureSensor;
+        }
+
+        function lightSensorSet() {
+            lightSensor = cpf.get("socket a1");
+            ui.set("socket a1", lightSensor);
+            return lightSensor;
+        }
+
+        function sprayControl(status, time) {
+            cpf.set("socket d3", status);
+            delay(time);
+        }
+
+        function LEDControl(status) {
+            cpf.set("socket d2", status);
+        }
+        cpf.repeat();
+    </script>
+</body>

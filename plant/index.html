@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <title>VoiceControl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <script>
+        setup();
+        var lightdata;
+        var tempdata = cpf.get("temperature sensor");
+        var celsius = toCelsius(tempdata);
+
+        if (lightdata < 500) //光感測器控制LED
+        {
+            ledcontrol(1);
+        } else {
+            ledcontrol(0);
+        }
+
+        if (tempdata > 30) //溫度控制電扇
+        {
+            for (i = 0; i < 255; i += 10) { //風扇建快
+                cpf.request('["analogWrite",3,' + i + ']');
+
+            }
+        }
+
+
+        function ledcontrol() //控制LED
+        {
+            cpf.set("socket d2", status);
+        }
+
+        function temp() {
+            if (cpf) {
+                tempdata = cpf.get("temperature sensor");
+                celsius = toCelsius(tempdata);
+                document.getElementById("temp").innerHTML = celsius;
+            }
+
+        }
+
+
+
+        // Temperature
+        function toCelsius(value) {
+            var resistance = parseFloat((1023 - value) * 10000 / value);
+            var temperature = 1 / (Math.log(resistance / 10000) / 3975 + 1 / 298.15) - 273.15;
+            return temperature.toFixed(2);
+        }
+
+
+
+
+
+
+
+
+
+        function setup() {
+            if (cpf) {
+                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"],["setPinMode","digital",5,"TONE"],["setPinMode","digital",4,"SERVO"],["setPinMode","digital",2,"OUTPUT"],["setPinMode", "analog", 1, "INPUT"],["setPinMode", "analog", 0, "INPUT"]');
+            }
+
+        }
+    </script>
+
+
+
+
+</body>

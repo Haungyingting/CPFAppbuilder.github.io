@@ -21,9 +21,9 @@
 
         if (lightdata < 500) //光感測器控制LED
         {
-            ledcontrol(1);
+            LEDControl(1, 1000);
         } else {
-            ledcontrol(0);
+            LEDControl(0, 1000);
         }
 
         if (tempdata > 30) //溫度控制電扇
@@ -34,17 +34,13 @@
             }
         }
 
-
-        function ledcontrol() //控制LED
-        {
-            if (cpf) {
-                lightdata = cpf.get("light sensor");
-                document.getElementById("lightvalue").innerHTML = lightdata;
-                cpf.set("socket d2", 1); //亮
-
-            }
-            setTimeout(ledcontrol, 1000);
+        function LEDControl(status, time) { //燈光
+            cpf.set("socket d2", status);
+            delay(time);
         }
+
+
+
 
         function temp() {
             if (cpf) {

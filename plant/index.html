@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <h3>Temperature:<span id="temp">none</span>。c</h3>
+    <h3>lightdata:<span id="lightvalue">none</span></h3>
 
     <script>
         setup();
@@ -35,7 +37,13 @@
 
         function ledcontrol() //控制LED
         {
-            cpf.set("socket d2", status);
+            if (cpf) {
+                lightdata = cpf.get("light sensor");
+                document.getElementById("lightvalue").innerHTML = lightdata;
+                cpf.set("socket d2", 1); //亮
+
+            }
+            setTimeout(loop, 1000);
         }
 
         function temp() {

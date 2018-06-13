@@ -36,7 +36,8 @@
                     for (i = 0; i < 255; i += 10) //風扇快
                         cpf.request('["analogWrite",3,' + i + ']');
 
-                } else {
+                }
+                if (celsius <= 45) {
                     cpf.request('["analogWrite",3,0]'); //風扇關
                 }
 
@@ -44,7 +45,8 @@
                 if (lightdata < 500) //light sensor control LED
                 {
                     cpf.set("socket d2", 1);
-                } else {
+                }
+                if (lightdata >= 500) {
                     cpf.set("socket d2", 0);
                 }
 

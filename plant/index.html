@@ -37,44 +37,22 @@
         }
         loop();
 
-
-
-
-
-
-
-        if (lightdata < 500) //光感測器控制LED
+        if (celsius > 45) //temp control fan
         {
-            LEDControl(1, 1000);
-        } else {
-            LEDControl(0, 1000);
-        }
-
-        if (tempdata > 30) //溫度控制電扇
-        {
-            for (i = 0; i < 255; i += 10) { //風扇建快
+            for (i = 0; i < 255; i += 10) //風扇快
                 cpf.request('["analogWrite",3,' + i + ']');
 
-            }
-        }
-
-        function LEDControl(status, time) { //燈光
-            cpf.set("socket d2", status);
-            delay(time);
+        } else {
+            cpf.request('["analogWrite",3,0]'); //風扇關
         }
 
 
-
-
-        function temp() {
-            if (cpf) {
-                tempdata = cpf.get("temperature sensor");
-                celsius = toCelsius(tempdata);
-                document.getElementById("temp").innerHTML = celsius;
-            }
-
+        if (lightdata < 500) //light sensor control LED
+        {
+            cpf.set("socket d2", 1);
+        } else {
+            cpf.set("socket d2", 0);
         }
-
 
 
         // Temperature
@@ -83,14 +61,6 @@
             var temperature = 1 / (Math.log(resistance / 10000) / 3975 + 1 / 298.15) - 273.15;
             return temperature.toFixed(2);
         }
-
-
-
-
-
-
-
-
 
         function setup() {
             if (cpf) {

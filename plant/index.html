@@ -16,9 +16,32 @@
     <script>
         setup();
         var lightdata;
-        var tempdata = cpf.get("temperature sensor");
+
         document.getElementById("lightvalue").innerHTML = lightdata;
-        var celsius = toCelsius(tempdata);
+
+
+        function loop() {
+            if (cpf) {
+                //tempdata get
+                tempdata = cpf.get("temperature sensor");
+                celsius = toCelsius(tempdata);
+                document.getElementById("temp").innerHTML = celsius;
+
+                //lightdata get
+                lightdata = cpf.get("light sensor");
+                document.getElementById("lightvalue").innerHTML = lightdata;
+
+
+            }
+            setTimeout(loop, 1000);
+        }
+        loop();
+
+
+
+
+
+
 
         if (lightdata < 500) //光感測器控制LED
         {

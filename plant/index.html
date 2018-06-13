@@ -31,7 +31,7 @@
                 lightdata = cpf.get("light sensor");
                 document.getElementById("lightvalue").innerHTML = lightdata;
 
-                if (celsius > 45) //temp control fan
+                if (celsius > 30) //temp control fan
                 {
                     for (i = 0; i < 255; i += 10) //風扇快
                         cpf.request('["analogWrite",3,' + i + ']');

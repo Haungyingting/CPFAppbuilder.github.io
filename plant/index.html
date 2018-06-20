@@ -34,24 +34,24 @@
                 moistureSensordata = cpf.get("a2");
                 document.getElementById("moisturevalue").innerHTML = moistureSensordata; //顯示在頁面上
 
-                if (celsius > 30) //temp control fan
-                {
-                    for (i = 0; i < 255; i += 10) //風扇快
-                        cpf.request('["analogWrite",3,' + i + ']');
+                // if (celsius > 30) //temp control fan
+                // {
+                //     for (i = 0; i < 255; i += 10) //風扇快
+                //         cpf.request('["analogWrite",3,' + i + ']');
 
-                }
-                if (celsius <= 45) {
-                    cpf.request('["analogWrite",3,0]'); //風扇關
-                }
+                // }
+                // if (celsius <= 45) {
+                //     cpf.request('["analogWrite",3,0]'); //風扇關
+                // }
 
 
-                if (lightdata < 500) //light sensor control LED
-                {
-                    cpf.set("socket d2", 1);
-                }
-                if (lightdata >= 500) {
-                    cpf.set("socket d2", 0);
-                }
+                // if (lightdata < 500) //light sensor control LED
+                // {
+                //     cpf.set("socket d2", 1);
+                // }
+                // if (lightdata >= 500) {
+                //     cpf.set("socket d2", 0);
+                // }
 
 
                 // if (moistureSensor < 300) { //moisture sensor control water
@@ -90,7 +90,7 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode","digital",4,"SERVO"],["setPinMode","digital",3,"PWM"],["setPinMode","digital",2,"OUTPUT"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 2, "INPUT"],["grove_rgblcd_begin",16,2]');
+                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 2, "INPUT"]');
             }
 
         }

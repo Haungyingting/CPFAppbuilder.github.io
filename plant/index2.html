@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <title>VoiceControl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <h3>moisturedata:<span id="moisturevalue">none</span></h3>
+
+    <script>
+        setup();
+
+        var moistureSensordata;
+
+        function loop() {
+            if (cpf) {
+
+                moistureSensordata = cpf.get("a2");
+                document.getElementById("moisturevalue").innerHTML = moistureSensordata; //顯示在頁面上
+
+
+
+
+                // if (moistureSensor < 300) { //moisture sensor control water
+                //    waterControl(180);
+                // } else {
+                //    waterControl(0);
+                //}
+                //lcd顯示
+                //cpf.request('["grove_rgblcd_clear"]');//清空文字
+                //cpf.request('["grove_rgblcd_set_rgb",0,255,0]');
+                //cpf.request('["grove_rgblcd_print",0,1,"lightdata:"'+lightdata+"/ temprature:"+celsius+'"]')
+            }
+            setTimeout(loop, 1000);
+        }
+        loop();
+
+
+        function setup() {
+            if (cpf) {
+                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 2, "INPUT"]');
+            }
+
+        }
+    </script>
+
+
+
+
+</body>

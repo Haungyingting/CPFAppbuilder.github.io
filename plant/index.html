@@ -31,8 +31,8 @@
                 document.getElementById("lightvalue").innerHTML = lightdata;
 
                 //moistureSensor get
-                //moistureSensor = cpf.get("socket a2");
-                //document.getElementById("moisturevalue").innerHTML = moistureSensor; //顯示在頁面上
+                moistureSensor = cpf.get("socket a2");
+                document.getElementById("moisturevalue").innerHTML = moistureSensor; //顯示在頁面上
 
                 if (celsius > 30) //temp control fan
                 {
@@ -54,7 +54,7 @@
                 }
 
 
-                if (moistureSensorSet() < 300) { //moisture sensor control water
+                if (moistureSensor < 300) { //moisture sensor control water
                     waterControl(180);
                 } else {
                     waterControl(0);
@@ -68,12 +68,12 @@
         }
         loop();
 
-        function moistureSensorSet() { //moisture sensor
-            moistureSensor = cpf.get("socket a2");
-            document.getElementById("moisturevalue").innerHTML = moistureSensor; //顯示在頁面上
-            //cpf.set("socket a2", moistureSensor);
-            return moistureSensor;
-        }
+        // function moistureSensorSet() { //moisture sensor
+        //     moistureSensor = cpf.get("socket a2");
+        //     document.getElementById("moisturevalue").innerHTML = moistureSensor; //顯示在頁面上
+        //     cpf.set("socket a2", moistureSensor);
+        //     return moistureSensor;
+        // }
 
         function waterControl(status) //control water
         {

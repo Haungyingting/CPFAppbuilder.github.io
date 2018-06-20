@@ -54,11 +54,11 @@
                 }
 
 
-                // if (moistureSensor < 300) { //moisture sensor control water
-                //    waterControl(180);
-                // } else {
-                //    waterControl(0);
-                //}
+                if (moistureSensor < 300) { //moisture sensor control water
+                    waterControl(180);
+                } else {
+                    waterControl(0);
+                }
                 //lcd顯示
                 //cpf.request('["grove_rgblcd_clear"]');//清空文字
                 //cpf.request('["grove_rgblcd_set_rgb",0,255,0]');
@@ -75,11 +75,11 @@
         //     return moistureSensor;
         // }
 
-        //function waterControl(status) //control water
-        //{
-        //cpf.set("socket d4",ststus);//可擇一
-        //  cpf.request('["analogWrite",4,' + status + ']');
-        //}
+        function waterControl(status) //control water
+        {
+            cpf.set("socket d4", ststus); //可擇一
+            cpf.request('["analogWrite",4,' + status + ']');
+        }
 
         // Temperature
         function toCelsius(value) {
@@ -90,7 +90,7 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "digital", 3, "PWM"],["setPinMode", "analog", 0, "INPUT"]');
+                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "digital", 3, "PWM"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "digital", 4, "SERVO"]');
             }
 
         }

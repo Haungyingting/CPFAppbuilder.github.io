@@ -22,16 +22,16 @@
         function loop() {
             if (cpf) {
                 //tempdata get
-                tempdata = cpf.get("A1");
+                tempdata = cpf.get("socket a1");
                 celsius = toCelsius(tempdata);
                 document.getElementById("temp").innerHTML = celsius; //顯示在頁面上
 
                 //lightdata get
-                lightdata = cpf.get("A0");
+                lightdata = cpf.get("socket a0");
                 document.getElementById("lightvalue").innerHTML = lightdata;
 
                 //moistureSensor get
-                moistureSensor = cpf.get("A2");
+                moistureSensor = cpf.get("socket a2");
                 document.getElementById("moisturevalue").innerHTML = moistureSensor; //顯示在頁面上
 
                 if (celsius > 30) //temp control fan

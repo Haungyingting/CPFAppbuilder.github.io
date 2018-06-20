@@ -12,24 +12,26 @@
 <body>
     <h3>Temperature:<span id="temp">none</span>。c</h3>
     <h3>lightdata:<span id="lightvalue">none</span></h3>
+    <h3>moisturedata:<span id="moisturevalue">none</span></h3>
 
     <script>
         setup();
         var lightdata;
-
-        document.getElementById("lightvalue").innerHTML = lightdata;
-
+        var moistureSensor;
 
         function loop() {
             if (cpf) {
                 //tempdata get
-                tempdata = cpf.get("temperature sensor");
+                tempdata = cpf.get("A1");
                 celsius = toCelsius(tempdata);
-                document.getElementById("temp").innerHTML = celsius;
+                document.getElementById("temp").innerHTML = celsius; //顯示在頁面上
 
                 //lightdata get
                 lightdata = cpf.get("light sensor");
                 document.getElementById("lightvalue").innerHTML = lightdata;
+
+                moistureSensor = cpf.get("socket a2");
+                document.getElementById("moisturevalue").innerHTML = moistureSensor; //顯示在頁面上
 
                 if (celsius > 30) //temp control fan
                 {
@@ -51,13 +53,31 @@
                 }
 
 
+                if (moistureSensorSet() < 300) { //moisture sensor control water
+                    waterControl(180);
+                } else {
+                    waterControl(0);
+                }
+                //lcd顯示
+                //cpf.request('["grove_rgblcd_clear"]');//清空文字
+                //cpf.request('["grove_rgblcd_set_rgb",0,255,0]');
+                //cpf.request('["grove_rgblcd_print",0,1,"lightdata:"'+lightdata+"/ temprature:"+celsius+'"]')
             }
             setTimeout(loop, 1000);
         }
         loop();
 
+        function moistureSensorSet() { //moisture sensor
+            moistureSensor = cpf.get("socket a2");
+            ui.set("socket a2", moistureSensor);
+            return moistureSensor;
+        }
 
-
+        function waterControl(status) //control water
+        {
+            //cpf.set("socket d4",ststus);//可擇一
+            cpf.request('["analogWrite",4,' + ststus + ']');
+        }
 
         // Temperature
         function toCelsius(value) {
@@ -68,7 +88,7 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode","digital",3,"PWM"],["setPinMode","digital",2,"OUTPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 0, "INPUT"]');
+                cpf.setPinMode('["resetPin"],["setPinMode","digital",4,"SERVO"],["setPinMode","digital",3,"PWM"],["setPinMode","digital",2,"OUTPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 2, "INPUT"],["grove_rgblcd_begin",16,2]');
             }
 
         }

@@ -78,7 +78,7 @@
         function waterControl(status) //control water
         {
             //cpf.set("socket d4",ststus);//可擇一
-            cpf.request('["analogWrite",4,' + ststus + ']');
+            cpf.request('["analogWrite",4,' + status + ']');
         }
 
         // Temperature

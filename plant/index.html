@@ -45,13 +45,13 @@
                 }
 
 
-                // if (lightdata < 500) //light sensor control LED
-                // {
-                //     cpf.set("socket d2", 1);
-                // }
-                // if (lightdata >= 500) {
-                //     cpf.set("socket d2", 0);
-                // }
+                if (lightdata < 500) //light sensor control LED
+                {
+                    cpf.set("socket d2", 1);
+                }
+                if (lightdata >= 500) {
+                    cpf.set("socket d2", 0);
+                }
 
 
                 // if (moistureSensor < 300) { //moisture sensor control water
@@ -90,7 +90,7 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "digital", 3, "PWM"]');
+                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "digital", 3, "PWM"],["setPinMode", "analog", 0, "INPUT"]');
             }
 
         }

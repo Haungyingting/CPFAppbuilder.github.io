@@ -34,15 +34,15 @@
                 moistureSensordata = cpf.get("a2");
                 document.getElementById("moisturevalue").innerHTML = moistureSensordata; //顯示在頁面上
 
-                // if (celsius > 30) //temp control fan
-                // {
-                //     for (i = 0; i < 255; i += 10) //風扇快
-                //         cpf.request('["analogWrite",3,' + i + ']');
+                if (celsius > 30) //temp control fan
+                {
+                    for (i = 0; i < 255; i += 10) //風扇快
+                        cpf.request('["analogWrite",3,' + i + ']');
 
-                // }
-                // if (celsius <= 45) {
-                //     cpf.request('["analogWrite",3,0]'); //風扇關
-                // }
+                }
+                if (celsius <= 45) {
+                    cpf.request('["analogWrite",3,0]'); //風扇關
+                }
 
 
                 // if (lightdata < 500) //light sensor control LED

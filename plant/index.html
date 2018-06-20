@@ -27,10 +27,11 @@
                 document.getElementById("temp").innerHTML = celsius; //顯示在頁面上
 
                 //lightdata get
-                lightdata = cpf.get("light sensor");
+                lightdata = cpf.get("A0");
                 document.getElementById("lightvalue").innerHTML = lightdata;
 
-                moistureSensor = cpf.get("socket a2");
+                //moistureSensor get
+                moistureSensor = cpf.get("A2");
                 document.getElementById("moisturevalue").innerHTML = moistureSensor; //顯示在頁面上
 
                 if (celsius > 30) //temp control fan

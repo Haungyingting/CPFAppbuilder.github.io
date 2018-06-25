@@ -47,10 +47,17 @@
 
                 if (lightdata < 500) //light sensor control LED
                 {
+
                     cpf.set("socket d2", 1);
+                    cpf.set("socket d6", 1);
+                    cpf.set("socket d7", 1);
+                    cpf.set("socket d8", 1);
                 }
                 if (lightdata >= 500) {
                     cpf.set("socket d2", 0);
+                    cpf.set("socket d6", 1);
+                    cpf.set("socket d7", 1);
+                    cpf.set("socket d8", 1);
                 }
 
 
@@ -68,13 +75,6 @@
         }
         loop();
 
-        // function moistureSensorSet() { //moisture sensor
-        //     moistureSensor = cpf.get("socket a2");
-        //     document.getElementById("moisturevalue").innerHTML = moistureSensor; //顯示在頁面上
-        //     cpf.set("socket a2", moistureSensor);
-        //     return moistureSensor;
-        // }
-
         function waterControl(status) //control water
         {
             //cpf.set("socket d4", ststus); //可擇一
@@ -90,7 +90,7 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "digital", 3, "PWM"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "digital", 4, "SERVO"]');
+                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1 , "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "digital", 3, "PWM"],["setPinMode","digital",2,"OUTPUT"],["setPinMode","digital",6,"OUTPUT"],["setPinMode","digital",7,"OUTPUT"],["setPinMode","digital",8,"OUTPUT"],["setPinMode", "digital", 4, "SERVO"]');
             }
 
         }
